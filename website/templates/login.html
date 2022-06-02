@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<form style="max-width: 450px; margin-inline: auto;" method="POST">
+    <h1 style="text-align: center; margin: 50px; margin-top: 100px">Вход</h3>
+    <div class="form-group">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-dark" style="width: 100%;">Войти</button>
+</form>
+{% endblock %}

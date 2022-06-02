@@ -1,0 +1,55 @@
+{% extends "base.html"%}
+
+{% block title %}NotePal{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; margin: 50px;">Заметки</h1>
+<ol class="list-group list-group-numbered" id="notes">
+    {% for note in user.notes %}
+    <li id="note-id{{note.id}}" class="list-group-item" style="background-color: #f9fafb;">
+
+        <!-- Note number, nickname -->
+        <div>
+            <style>.list-group-numbered li::before {color:gray;} </style>
+        </div>
+
+        <!-- Note text, actions button -->
+        <div class="clearfix" style="display: flex;" >
+            <span class="float-start" style="width: 100%;">{{ note.text }}</span>
+
+            <br>
+
+            <!-- <button type="button" class="btn-close" onClick="deleteNote({{ note.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button> -->
+
+            <div class="btn-group dropstart float-end">
+                <!-- <button class="btn btn-light">Изменить</button> -->
+                <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Свернуть</a></li>
+                    <!-- <li><hr class="dropdown-divider"></li> -->
+                    <li><a class="dropdown-item" href="#" onClick="editNote({{ note.id }})">Изменить</a></li>
+                    <!-- <li><hr class="dropdown-divider"></li> -->
+                    <li><a class="dropdown-item" href="#" onClick="deleteNote({{ note.id }})">Удалить</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Note date -->
+        <div style="color:gray;">
+            <span>19.04.2022 21:04:55 {todo: date}</span>
+        </div>
+
+        
+    </li>
+    {% endfor %}
+</ol>
+<form method="POST" style="width: 450px; margin-inline: auto;">
+    
+    <div style="text-align: center; display: flex;">
+        <textarea style="max-height: 600px; min-height: 38px;" name="note" id="note" class="form-control"></textarea>
+        <button type="submit" class="btn btn-dark">Отправить</button>
+    </div>
+</form>
+{% endblock %}
